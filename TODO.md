@@ -1,0 +1,7 @@
+- [ ] install libraries to RPI
+- [ ] get input from usb camera
+- [ ] process image stream
+    - [ ] find and filter contours
+    - [ ] calculate center
+    - [ ] calculate distance
+- [ ] send calculations through serial connection to roborio
