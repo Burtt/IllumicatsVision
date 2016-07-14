@@ -6,7 +6,7 @@ import visiontable
 
 cap = cv2.VideoCapture(0)
 table = visiontable.VisionTable()
-lower_lim = np.array([25,60,60])
+lower_lim = np.array([60,60,60])
 upper_lim = np.array([100,255,255]) 
 minContourArea = 400
 
