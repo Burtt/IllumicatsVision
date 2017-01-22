@@ -7,10 +7,10 @@ import visiontable
 cap = cv2.VideoCapture(0)
 table = visiontable.VisionTable()
 lower_lim = np.array([60,60,60])
-upper_lim = np.array([100,255,255]) 
+upper_lim = np.array([100,255,255])
 minContourArea = 400
 
-while(True):
+while(cap.isOpened()):
     # Capture frame-by-frame
     ret, frame = cap.read()
 
