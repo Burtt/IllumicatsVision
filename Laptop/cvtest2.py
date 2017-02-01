@@ -17,12 +17,14 @@ def findSecondBiggestContour(contours):
         if(cv2.contourArea(contours[i]) > cv2.contourArea(contours[biggestContourIndex])):
             secondBiggest = biggestContourIndex
             biggestContourIndex = i
-    return secondBiggest
+        elif(cv2.contourArea(contours[i]) > cv2.contourArea(contours[secondBiggest])):
+            secondBiggest = i
+    return biggestContourIndex, secondBiggest
 
 def findBigContours(contours):
     bigContours = []
     for i in range(len(contours)):
-        if(cv2.contourArea(contours[i]) > 450):
+        if(cv2.contourArea(contours[i]) > 1):#450
             bigContours.append(contours[i])
     return bigContours
 
@@ -44,17 +46,18 @@ while(True):
     # Our operations on the frame come here
     #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)#HSV
-    lower_lim = np.array([45,2,240])#45,2,248
-    upper_lim = np.array([130,40,255])#100,14,255
+    #white led ring: 45,2,240 - 130,40,255
+    lower_lim = np.array([80,23,235])#70,40,150
+    upper_lim = np.array([102,167,255])#100,255,255
     mask = cv2.inRange(hsv, lower_lim, upper_lim)
     img, contours, heirarchy = cv2.findContours(mask,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
     img = cv2.inRange(hsv, lower_lim, upper_lim)
     img = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
 
-    
+    countours = findBigContours(contours)
     # find big contours
-    biggestContourIndex = findBiggestContour(contours)
-    secondBiggestIndex = findSecondBiggestContour(contours)
+    #biggestContourIndex = findBiggestContour(contours)
+    biggestContourIndex, secondBiggestIndex = findSecondBiggestContour(contours)
     #bigContours = findBigContours(contours)
     #biggestContourIndex = findBestAR(bigContours)
     if(len(contours) != 0):
@@ -82,7 +85,13 @@ while(True):
         #    cy = int(M['m01']/M['m00'])
         #    img = cv2.circle(img,(cx,cy),4,(255,255,0),-1)
     
-    img = cv2.drawContours(img, contours, biggestContourIndex, (255,255,0), 3)
+    #img = cv2.drawContours(img, contours, biggestContourIndex, (255,255,0), 3)
+    #img = cv2.drawContours(img, contours, secondBiggestIndex, (255,0,0), 3)
+    for i in range(len(contours)):
+        col = cv2.contourArea(contours[i]) / 20
+        img = cv2.drawContours(img, contours, i, (0,255-col,col), 3)
+        
+    #print(str(len(contours)) + " " + str(secondBiggestIndex) + " " + str(biggestContourIndex))
     
     # Display the resulting frame
     cv2.imshow('frame',img)
