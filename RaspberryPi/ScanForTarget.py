@@ -4,13 +4,14 @@ import numpy as np
 import cv2
 import visiontable
 
-cap = cv2.VideoCapture(0)
+capA = cv2.VideoCapture(0)
+capB = cv2.VideoCapture(1)
 table = visiontable.VisionTable()
 lower_lim = np.array([80,23,235])
 upper_lim = np.array([102,167,255])
 minContourArea = 30
 
-while(cap.isOpened()):
+def process(cap):
     # Capture frame-by-frame
     ret, frame = cap.read()
 
@@ -46,13 +47,19 @@ while(cap.isOpened()):
             by = int((box[0][1] + box[2][1])/2)
             
             # publish results to dashboard
-            table.update(True, bx, by)
+            return True, bx, by
             
         # Otherwise, assume it is noise
         else:
-            table.update(False)
+            return False, -1, -1
     else:
-        table.update(False)
+        return False, -1, -1
+
+while(capA.isOpened() and capB.isOpened()):
+    foundA, ax, ay = process(capA)
+    foundB, bx, by = process(capB)
+    table.update(foundA, ax, ay, foundB, bx, by)
 
 # When everything's done, release the capture
-cap.release()
+capA.release()
+capB.release()

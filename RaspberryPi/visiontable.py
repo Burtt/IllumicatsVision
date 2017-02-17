@@ -14,7 +14,10 @@ class VisionTable:
     NetworkTable.initialize()
     self.table = NetworkTable.getTable("rpi")
 
-  def update(self, found, x=-1, y=-1):
-    self.table.putNumber("visionX", x)
-    self.table.putNumber("visionY", y)
-    self.table.putBoolean("found", found)
+  def update(self, afound, ax=-1, ay=-1, bfound, bx=-1, by=-1):
+    self.table.putNumber("AvisionX", ax)
+    self.table.putNumber("AvisionY", ay)
+    self.table.putBoolean("Afound", afound)
+    self.table.putNumber("BvisionX", bx)
+    self.table.putNumber("BvisionY", by)
+    self.table.putBoolean("Bfound", bfound)
