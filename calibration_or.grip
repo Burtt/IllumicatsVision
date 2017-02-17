@@ -1,0 +1,285 @@
+<grip:Pipeline>
+  <sources>
+    <grip:MultiImageFile>
+      <property name="path[2]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_22_46_Pro.jpg"/>
+      <property name="path[5]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_23_01_Pro.jpg"/>
+      <property name="path[8]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_23_08_Pro.jpg"/>
+      <property name="path[12]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_24_18_Pro.jpg"/>
+      <property name="path[15]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_25_35_Pro.jpg"/>
+      <property name="index" value="14"/>
+      <property name="path[18]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_25_43_Pro.jpg"/>
+      <property name="path[0]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_22_43_Pro.jpg"/>
+      <property name="path[3]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_22_49_Pro.jpg"/>
+      <property name="path[6]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_23_04_Pro.jpg"/>
+      <property name="path[9]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_23_10_Pro.jpg"/>
+      <property name="path[10]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_23_14_Pro.jpg"/>
+      <property name="path[13]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_24_24_Pro.jpg"/>
+      <property name="path[16]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_25_38_Pro.jpg"/>
+      <property name="numImages" value="19"/>
+      <property name="path[1]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_22_45_Pro.jpg"/>
+      <property name="path[4]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_22_53_Pro.jpg"/>
+      <property name="path[7]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_23_06_Pro.jpg"/>
+      <property name="path[11]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_23_16_Pro.jpg"/>
+      <property name="path[14]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_25_25_Pro.jpg"/>
+      <property name="path[17]" value="C:\Users\tyler\Pictures\Camera Roll\WIN_20170208_16_25_41_Pro.jpg"/>
+    </grip:MultiImageFile>
+  </sources>
+  <steps>
+    <grip:Step name="HSL Threshold">
+      <grip:Input step="0" socket="0"/>
+      <grip:Input step="0" socket="1">
+        <value>
+          <double>71.22302158273381</double>
+          <double>113.44709507027584</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="0" socket="2">
+        <value>
+          <double>48.92086367384135</double>
+          <double>176.67235494880546</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="0" socket="3">
+        <value>
+          <double>103.95683708379593</double>
+          <double>160.71671801622412</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="0" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="HSV Threshold">
+      <grip:Input step="1" socket="0"/>
+      <grip:Input step="1" socket="1">
+        <value>
+          <double>73.38129059016275</double>
+          <double>98.08874501303195</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="1" socket="2">
+        <value>
+          <double>42.80575393772811</double>
+          <double>255.0</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="1" socket="3">
+        <value>
+          <double>233.9028722305092</double>
+          <double>255.0</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="1" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="CV bitwise_or">
+      <grip:Input step="2" socket="0"/>
+      <grip:Input step="2" socket="1"/>
+      <grip:Output step="2" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="HSV Threshold">
+      <grip:Input step="3" socket="0"/>
+      <grip:Input step="3" socket="1">
+        <value>
+          <double>79.09604573653915</double>
+          <double>95.50803159009963</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="3" socket="2">
+        <value>
+          <double>57.62711520922385</double>
+          <double>92.87879076871006</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="3" socket="3">
+        <value>
+          <double>110.45198312586983</double>
+          <double>142.87878209894353</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="3" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="CV bitwise_or">
+      <grip:Input step="4" socket="0"/>
+      <grip:Input step="4" socket="1"/>
+      <grip:Output step="4" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="HSV Threshold">
+      <grip:Input step="5" socket="0"/>
+      <grip:Input step="5" socket="1">
+        <value>
+          <double>67.79660774489581</double>
+          <double>108.34225006919493</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="5" socket="2">
+        <value>
+          <double>56.026370309840495</double>
+          <double>227.72727272727272</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="5" socket="3">
+        <value>
+          <double>211.2994384630925</double>
+          <double>255.0</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="5" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="CV bitwise_or">
+      <grip:Input step="6" socket="0"/>
+      <grip:Input step="6" socket="1"/>
+      <grip:Output step="6" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="HSV Threshold">
+      <grip:Input step="7" socket="0"/>
+      <grip:Input step="7" socket="1">
+        <value>
+          <double>79.09604735293631</double>
+          <double>108.34225006919493</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="7" socket="2">
+        <value>
+          <double>80.03766173023287</double>
+          <double>185.30303608287466</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="7" socket="3">
+        <value>
+          <double>72.0338948702408</double>
+          <double>164.0909090909091</double>
+        </value>
+      </grip:Input>
+      <grip:Output step="7" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="CV bitwise_or">
+      <grip:Input step="8" socket="0"/>
+      <grip:Input step="8" socket="1"/>
+      <grip:Output step="8" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="Find Contours">
+      <grip:Input step="9" socket="0"/>
+      <grip:Input step="9" socket="1">
+        <value>false</value>
+      </grip:Input>
+      <grip:Output step="9" socket="0" previewed="false"/>
+    </grip:Step>
+    <grip:Step name="Filter Contours">
+      <grip:Input step="10" socket="0"/>
+      <grip:Input step="10" socket="1">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="10" socket="2">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="10" socket="3">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="10" socket="4">
+        <value>1000</value>
+      </grip:Input>
+      <grip:Input step="10" socket="5">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="10" socket="6">
+        <value>1000</value>
+      </grip:Input>
+      <grip:Input step="10" socket="7">
+        <value>
+          <double>60.89140241877956</double>
+          <double>100.0</double>
+        </value>
+      </grip:Input>
+      <grip:Input step="10" socket="8">
+        <value>1000000</value>
+      </grip:Input>
+      <grip:Input step="10" socket="9">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="10" socket="10">
+        <value>0</value>
+      </grip:Input>
+      <grip:Input step="10" socket="11">
+        <value>1000</value>
+      </grip:Input>
+      <grip:Output step="10" socket="0" previewed="true"/>
+    </grip:Step>
+  </steps>
+  <connections>
+    <grip:Connection>
+      <grip:Output step="6" socket="0" previewed="false"/>
+      <grip:Input step="8" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="true"/>
+      <grip:Input step="5" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="true"/>
+      <grip:Input step="3" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="3" socket="0" previewed="false"/>
+      <grip:Input step="4" socket="1"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="4" socket="0" previewed="false"/>
+      <grip:Input step="6" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="1" socket="0" previewed="false"/>
+      <grip:Input step="2" socket="1"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="5" socket="0" previewed="false"/>
+      <grip:Input step="6" socket="1"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="8" socket="0" previewed="false"/>
+      <grip:Input step="9" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="7" socket="0" previewed="false"/>
+      <grip:Input step="8" socket="1"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="9" socket="0" previewed="false"/>
+      <grip:Input step="10" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="true"/>
+      <grip:Input step="0" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="2" socket="0" previewed="false"/>
+      <grip:Input step="4" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output step="0" socket="0" previewed="false"/>
+      <grip:Input step="2" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="true"/>
+      <grip:Input step="1" socket="0"/>
+    </grip:Connection>
+    <grip:Connection>
+      <grip:Output source="0" socket="0" previewed="true"/>
+      <grip:Input step="7" socket="0"/>
+    </grip:Connection>
+  </connections>
+  <settings>
+    <teamNumber>0</teamNumber>
+    <publishAddress>roboRIO-0-FRC.local</publishAddress>
+    <deployAddress>roboRIO-0-FRC.local</deployAddress>
+    <deployDir>/home/lvuser</deployDir>
+    <deployUser>lvuser</deployUser>
+    <deployJavaHome>/usr/local/frc/JRE/</deployJavaHome>
+    <deployJvmOptions>-Xmx50m -XX:-OmitStackTraceInFastThrow -XX:+HeapDumpOnOutOfMemoryError -XX:MaxNewSize=16m</deployJvmOptions>
+  </settings>
+  <codeGenerationSettings>
+    <language>Java</language>
+    <className>GripPipeline</className>
+    <implementWpilibPipeline>false</implementWpilibPipeline>
+    <saveDir>C:\Users\tyler\GRIP</saveDir>
+    <packageName></packageName>
+    <moduleName>grip</moduleName>
+  </codeGenerationSettings>
+</grip:Pipeline>

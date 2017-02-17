@@ -64,10 +64,10 @@ while(True):
         # find box around contour and it's center
         recta = cv2.minAreaRect(contours[biggestContourIndex])
         rectb = cv2.minAreaRect(contours[secondBiggestIndex])
-        boxa = cv2.boxPoints(recta)
-        boxb = cv2.boxPoints(rectb)
+        boxa = cv2.cv.boxPoints(recta)
+        boxb = cv2.cv.boxPoints(rectb)
         rect = cv2.minAreaRect(np.concatenate([boxa,boxb]))
-        box = cv2.boxPoints(rect)
+        box = cv2.cv.boxPoints(rect)
         bx = int((box[0][0] + box[2][0])/2)
         by = int((box[0][1] + box[2][1])/2)
         #x,y,w,h = cv2.boundingRect(contours[biggestContourIndex])
@@ -77,6 +77,8 @@ while(True):
         box = np.int0(box)
         img = cv2.drawContours(img,[box],0,(0,0,255),1)
         img = cv2.circle(img,(bx,by),4,(0,255,255),-1)
+
+        print rect.width
 
         # find centroid from moments
         #M = cv2.moments(contours[biggestContourIndex])

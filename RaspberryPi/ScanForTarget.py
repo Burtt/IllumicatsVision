@@ -17,7 +17,7 @@ while(cap.isOpened()):
     # find contours
     hsv = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(hsv, lower_lim, upper_lim)
-    img, contours, heirarchy = cv2.findContours(mask,cv2.RETR_TREE,
+    contours, heirarchy = cv2.findContours(mask,cv2.RETR_TREE,
                                                 cv2.CHAIN_APPROX_SIMPLE) 
 
     if(len(contours) > 0):
@@ -37,11 +37,11 @@ while(cap.isOpened()):
         if(cv2.contourArea(contours[biggestContourIndex]) > minContourArea):
             # find center
             recta = cv2.minAreaRect(contours[biggestContourIndex])
-            rectb = cv2.minAreaRect(contours[secondContourBiggestIndex])
-            boxa = cv2.boxPoints(recta)
-            boxb = cv2.boxPoints(rectb)
+            rectb = cv2.minAreaRect(contours[secondBiggestIndex])
+            boxa = np.int0(cv2.cv.boxPoints(recta))
+            boxb = np.int0(cv2.cv.boxPoints(rectb))
             rect = cv2.minAreaRect(np.concatenate([boxa,boxb]))
-            box = cv2.boxPoints(rect)
+            box = np.int0(cv2.cv.boxPoints(rect))
             bx = int((box[0][0] + box[2][0])/2)
             by = int((box[0][1] + box[2][1])/2)
             
