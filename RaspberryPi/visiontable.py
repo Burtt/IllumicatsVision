@@ -21,3 +21,9 @@ class VisionTable:
     self.table.putNumber("BvisionX", bx)
     self.table.putNumber("BvisionY", by)
     self.table.putBoolean("Bfound", bfound)
+
+  def useA(self):
+    return self.table.getBoolean("Aenabled", True)
+
+  def useB(self):
+    return self.table.getBoolean("Benabled", True)

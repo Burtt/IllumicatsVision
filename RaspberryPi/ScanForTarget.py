@@ -5,10 +5,12 @@ import cv2
 import visiontable
 
 capA = cv2.VideoCapture(0)
+capA.set(cv2.CAP_PROP_BRIGHTNESS, 50)
 capB = cv2.VideoCapture(1)
+capB.set(cv2.CAP_PROP_BRIGHTNESS, 50)
 table = visiontable.VisionTable()
-lower_lim = np.array([80,23,235])
-upper_lim = np.array([102,167,255])
+lower_lim = np.array([73,79,78])#70,40,150
+upper_lim = np.array([110,250,255])#100,255,255
 minContourArea = 30
 
 def process(cap):
@@ -56,8 +58,16 @@ def process(cap):
         return False, -1, -1
 
 while(capA.isOpened() and capB.isOpened()):
-    foundA, ax, ay = process(capA)
-    foundB, bx, by = process(capB)
+    foundA = False
+    ax = 0
+    ay = 0
+    foundB = False
+    bx = 0
+    by = 0
+    if(table.useA()):
+        foundA, ax, ay = process(capA)
+    if(table.useB()):
+        foundB, bx, by = process(capB)
     table.update(foundA, ax, ay, foundB, bx, by)
 
 # When everything's done, release the capture
